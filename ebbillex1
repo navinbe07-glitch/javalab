@@ -1,0 +1,68 @@
+
+package ebbill;
+import java.util.Scanner;
+
+
+class Ebbill{
+    int amt=0,unit=0;
+    
+    
+    public static void main(String[] args){
+        
+        int bill=0;
+        System.out.println("Enter 'd' for domestic");
+        System.out.println("Enter 'c' for commerical");
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter connection type");
+        String c =in.next();
+        System.out.println("Enter units consumed: ");
+        int unit = in.nextInt();
+        Ebbill eb =new Ebbill();
+        int result =eb.calculate(c,unit);
+        eb.display(result);
+        
+           
+ 
+    }
+  int calculate(String c,int unit){
+      
+      switch(c){
+          case "d":
+              if (unit<=100)
+                  amt=0;
+              else if (unit>100 && unit<=200)
+                  amt=(unit-100)*2;
+              else if (unit>200 && unit<=500)
+                  amt=(unit-200)*4 +200;
+              else if (unit>500)
+                  amt=(unit-500)*6 +200+1200;
+              else
+                  amt=0;
+              break;
+             
+          case "c":
+              if (unit<=100)
+                  amt=(unit)*2;
+              else if (unit>100 && unit<=200)
+                  amt=(unit-100)*4 +200;
+              else if (unit>200 && unit<=500)
+                  amt=(unit-200)*6 +200+400;
+              else if (unit>500)
+                  amt=(unit-500)*7+200+400+1800;
+              else
+                  amt=0;
+              break;
+              
+          default:
+               System.out.println("Invalid input");
+                 
+      }
+      
+     return amt;
+  }          
+  
+ void display(int amt){
+     System.out.println("Amount to be Paid: Rs."+amt);
+ }
+  
+}
