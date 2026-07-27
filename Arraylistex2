@@ -1,0 +1,118 @@
+package travelex2;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Travelex2 {
+
+   
+    public static void main(String[] args) {
+        ArrayList<String> cityname= new ArrayList<>();
+        Scanner in =new Scanner(System.in);
+        int choice;
+        String city;
+        System.out.println("/----City Management---/");
+        System.out.println("1.Append city");
+        System.out.println("2.Insert city");
+        System.out.println("3.Search city");
+        System.out.println("4.Display city starting with letter");
+        System.out.println("5.Display all city");
+        System.out.println("6.Exit");
+        
+        
+        //program start
+        do{
+            System.out.println("Enter your choice");
+            choice=in.nextInt();
+            in.nextLine();
+            
+            // swicth case 
+            switch (choice){
+                case 1:
+                    //append city
+                     System.out.println("Enter city to append");
+                     city= in.nextLine();
+                     cityname.add(city);
+                     System.out.println(city+"added successfully");
+                     
+                    break;
+                case 2:
+                    //insert city
+                    if (cityname.size()==0){
+                         System.out.println("list is empty please append a city first");
+                    }
+                    else{
+                         System.out.println("Enter index");
+                         int index=in.nextInt();
+                         in.nextLine();
+                         if (index>=0 && index<=cityname.size()){
+                              System.out.println("Enter city name to insert");
+                              String newcity = in.nextLine();
+                              cityname.add(index,newcity);
+                              System.out.println(newcity+"insert successfully");
+                         }
+                         else{
+                              System.out.println("Invalid index");
+                         }
+                             
+                    }
+                    break;    
+                case 3:
+                    //search city
+                     System.out.println("Enter city to search: ");
+                     String searchcity = in.nextLine();
+                     if (cityname.contains(searchcity))
+                          System.out.println(searchcity+"is found");
+                     else
+                          System.out.println(searchcity+"is not found");
+                    break;
+                    
+                    
+                    
+                case 4:
+                    //display cites starting with letter
+                     System.out.println("Enter starting letter");
+                     char letter =in.next().charAt(0);
+                     System.out.println("city start with"+letter+": ");
+                     boolean found =false;
+                     for (String c:cityname){
+                         if (c.toLowerCase().startsWith(String.valueOf(letter).toLowerCase())){
+                              System.out.println(c);
+                              found = true;
+                              
+                         }
+                        
+                     }
+                      if (!found)
+                              System.out.println("No city found");
+                    break;    
+                case 5:
+                    
+                    //display all cites
+                    if(cityname.isEmpty())
+                        System.out.println("No city avaliable");
+                    else
+                         System.out.println("all cites"+cityname);
+                    break;    
+                    
+                    
+                    
+                case 6:
+                     System.out.println("Exting..");
+                    break;   
+                    
+                    
+                    
+                default:
+                     System.out.println("Invalid choice");
+            }
+            
+            
+        }
+        while (choice!=6);{
+            in.close();
+        
+        
+        }
+    }
+    
+}
