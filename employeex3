@@ -1,0 +1,177 @@
+package employeex3;
+import java.util.Scanner;
+
+class Salary {
+    String emp_name,designation,mail_id,address;
+    int emp_id,mobile_no;
+    double bp,da,hra,gp,pf,staff,np;
+   
+    
+    //input methode creation
+    
+   public void input(){
+        Scanner in =new Scanner(System.in);
+        System.out.println("Enter employee name");
+        emp_name =in.nextLine();
+        System.out.println("Enter employee address");
+        address=in.nextLine();
+        System.out.println("Enter employee mail id");
+        mail_id=in.nextLine();
+        System.out.println("Enter employee id");
+        emp_id=in.nextInt();
+        System.out.println("Enter employee mobile number");
+        mobile_no=in.nextInt();
+        System.out.println("Enter employee basic pay");
+        bp=in.nextDouble();
+        
+    }
+   
+   // output methode creation
+   
+   public void output(){
+       System.out.println("Employee name                 :"+emp_name);
+       System.out.println("Employee id                   :"+emp_id);
+       System.out.println("Employee address              :"+address);
+       System.out.println("Employee mail id              :"+mail_id);
+       System.out.println("Employee mobile number        :"+mobile_no);
+       System.out.println("Employee basic pay            :"+bp);
+       System.out.println("Employee dearness alavence    :"+da);
+       System.out.println("Employee house rent alavence  :"+hra);
+       System.out.println("Employee gross pay            :"+gp);
+       System.out.println("Employee provident fund       :"+pf);
+       System.out.println("Employee staff club           :"+staff);
+       System.out.println("Employee net pay              :"+np);
+       
+   }
+      
+}
+
+
+class Programmer extends Salary{//child class2
+    Programmer(){
+      designation ="programmer";
+    
+    }
+    public void programmersalary(){
+      da=bp*0.97;
+      hra=bp*0.1;
+      gp=bp+da+hra;
+      pf=bp*0.12;
+      staff=bp*0.01;
+      np=gp-(pf+staff);
+    
+    }
+
+}
+class Assistantprofessor extends Salary{//child class2
+   Assistantprofessor(){
+      designation ="assistantprofessor";
+    
+   }
+   public void assistantprofessorsalary(){
+      da=bp*(110/100);
+      hra=bp*0.2;
+      gp=bp+da+hra;
+      pf=bp*0.12;
+      staff=bp*0.05;
+      np=gp-(pf+staff);
+    
+    }
+}
+class Associateprofessor extends Salary{//child class3
+     Associateprofessor(){
+         designation ="associateprofessor";
+    
+    }
+    public void associateprofessorsalary(){
+      da=bp*(130/100);
+      hra=bp*0.3;
+      gp=bp+da+hra;
+      pf=bp*0.12;
+      staff=bp*0.1;
+      np=gp-(pf+staff);
+    
+    }
+}
+class Professor extends Salary{//child class4
+Professor(){
+    designation ="professor";
+    
+}
+public void professorsalary(){
+    da=bp*(140/100);
+    hra=bp*0.4;
+    gp=bp+da+hra;
+    pf=bp*0.12;
+    staff=bp*0.15;
+    np=gp-(pf+staff);
+    
+}
+}
+class Employeex3{
+    public static void main (String[] args){
+        Programmer p = new Programmer();
+        Assistantprofessor cp = new Assistantprofessor();
+        Associateprofessor ap = new Associateprofessor();
+        Professor pf= new Professor();
+        Scanner in =new Scanner(System.in);
+        System.out.println("1.Programmer");
+        System.out.println("2.Assistantprofessor");
+        System.out.println("3.Associateprofessor");
+        System.out.println("4.professor");
+        System.out.println("Enter choice");
+        String choice = in.nextLine();
+        switch(choice){
+            case "programmer":
+                p.input();
+                if(p.bp>15000 && p.bp<=20000){
+                     p.programmersalary();
+                     p.output();
+                }
+                else
+                    System.out.println("Invalid salary");
+                break;
+                
+            case "assistantprofessor":
+                cp.input();
+                if(cp.bp>20001 && cp.bp<=30000){
+                     cp.assistantprofessorsalary();
+                     cp.output();
+                }
+                else
+                    System.out.println("Invalid salary");
+                
+                break;
+            case "Associateprofessor":
+                ap.input();
+                if(ap.bp>30001 && ap.bp<=40000){
+                     ap.associateprofessorsalary();
+                     ap.output();
+                }
+                else
+                    System.out.println("Invalid salary");
+                
+               
+                break;
+                
+            case "professor":
+                pf.input();
+                if (pf.bp>40000) {
+                     pf.professorsalary();
+                     pf.output();
+                }
+                else
+                    System.out.println("Invalid salary");
+                
+               
+                
+                break;
+                
+            default:
+                System.out.println("Invalid choice");
+        }
+        
+    }
+}
+
+
