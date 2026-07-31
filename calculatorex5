@@ -1,0 +1,97 @@
+
+package calex5;
+import java.util.Scanner;
+interface function{
+    void add(double a,double b);
+    void sub(double a,double b);
+    void mul(double a,double b);
+    void div(double a,double b);
+}
+
+class calculator implements function{
+    public void add(double a,double b){
+        System.out.println("Addition :"+(a+b));
+
+    }
+    
+    public void sub(double a,double b){
+        System.out.println("Subraction :"+(a-b));
+
+    }
+     
+    public void mul(double a,double b){
+        System.out.println("Multiplication :"+(a*b));
+
+    }
+      
+    public void div(double a,double b){
+        if (b!=0){
+            System.out.println("Division :"+(a/b));
+        }
+        else{
+            System.out.println("cannot divide by zero!!!");
+        }
+
+    }
+}
+
+
+
+public class Calex5 {
+    
+
+    public static void main(String[] args) {
+        do{
+            
+            System.out.println("----------calculator---------");
+            System.out.println("1--Addition\n2--Subraction\n3--Multiplication\n4--Divition");
+            Scanner in =new Scanner(System.in);
+            
+            System.out.println("Enter the choice");
+            int ch=in.nextInt();
+            calculator cal=new calculator();
+            
+            switch(ch){
+                case 1:
+                    System.out.println("Enter number 1: ");
+                    double a1=in.nextDouble();
+                    System.out.println("Enter number 2: ");
+                    double a2=in.nextDouble();
+                    cal.add(a1,a2);
+                    
+                    break;
+                    
+                case 2:
+                    System.out.println("Enter number 1: ");
+                    double b1=in.nextDouble();
+                    System.out.println("Enter number 2: ");
+                    double b2=in.nextDouble();
+                    cal.sub(b1,b2);
+                    break;
+                    
+                case 3:
+                    System.out.println("Enter number 1: ");
+                    double c1=in.nextDouble();
+                    System.out.println("Enter number 2: ");
+                    double c2=in.nextDouble();
+                    cal.mul(c1,c2);
+                    break;
+                    
+                case 4:
+                    System.out.println("Enter number 1: ");
+                    double d1=in.nextDouble();
+                    System.out.println("Enter number 2: ");
+                    double d2=in.nextDouble();
+                    cal.div(d1,d2);
+                    break;
+                    
+                default:
+                    System.out.println("Invalid choice");
+                    
+           }
+            
+        }while(true);
+
+    }
+    
+}
